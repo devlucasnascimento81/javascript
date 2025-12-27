@@ -7,6 +7,14 @@ console.log(botao); // Vamos testar se pegamos o  botão
 // 2. CRIAR uma variável para guardar o número de cliques
 let contagem = 0;
 
+// BUSCAR o valor salvo no localStorage
+const contagemSalva = localStorage.getItem('numeroCliques')
+
+// Se existir um valor salvo, use ele
+if (contagemSalva) {
+    contagem = Number(contagemSalva)
+    botao.textContent = 'Cliques:' + contagem
+}
 
 botao.addEventListener('click', function() {
     console.log('Clicou no botão!')
@@ -14,8 +22,10 @@ botao.addEventListener('click', function() {
     contagem ++
     
     // Atualiza o texto do botão
-
     botao.textContent = 'Cliques:' + contagem
 
-    console.log('Contagem atual:', contagem)
+    // SALVAR no localStorage
+
+    localStorage.setItem('numeroCliques', contagem)
+
 })
